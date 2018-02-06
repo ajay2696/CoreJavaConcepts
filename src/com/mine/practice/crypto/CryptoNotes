@@ -1,0 +1,10 @@
+1. Provider: Provider is the class which supports different encryption algorithms.
+2. Cipher: Cipher is the algorithm used to encrypt and decrypt data.
+3. Message Digest: It is used for calculating unique code for Message bytes using SHA(Secured Hashing Algorithm).
+4. Message Authentication Code(MAC): it is used to read Message Digest.
+5. Digital Signature is signing the message using private key. Browser can use public key to decrypt this packet of data.
+6. Java Key Store(JKS) is the tool used store public key, Private Key and certificates.
+7. Keytool is used to generate symmentric or asymmentric keys and import/export certificates.
+
+
+	
