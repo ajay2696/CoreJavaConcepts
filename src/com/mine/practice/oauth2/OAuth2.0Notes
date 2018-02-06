@@ -1,0 +1,2 @@
+OAuth2.0 is open authentication protocol is used to authenticate applications to use each others data.
+	Ex: We can login to Khan Academy using Google or Facebook login id- It first login to google and then request is sent back to khan academy.

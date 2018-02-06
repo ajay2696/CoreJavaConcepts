@@ -1,0 +1,66 @@
+Thread is light weight process.
+	Threads are also objects same as other things in Java.
+	Threads are either objects of Thread class or sub classes of Thread class.
+In addition to being object it can also execute code
+
+Threads works on the Lock and Monitor mechanism on common objects
+
+Threads LifeCycle:-
+	New
+	Runnable : Once Thread is Started
+	Running  : JVM Thread Scheduler gives some time slice to run the code
+	Destroyed: After Completion of Execution thread will go to the Destroyed stage
+	---> Other States of thread
+	1. Sleep -> We can halt the execution of Thread for some time(Lock of the object is still holding)
+	2. Wait -> Waiting for Other thread to notify
+	3. Yield -> Give some time for other Threads to Execute
+	4. Join -> Join the Main Thread after Completing the Execution
+	5. Notify-> Notify the threads which are waiting for thread lock to execute. 
+				This will notify only one thread But which thread is depending on JVM Implementation
+	6. NotifyAll-> Notify all will notify all the threads which are waiting for object lock, any one of them can get lock again
+
+Race Condition:-
+	If Multiple Threads try to access same resource and change the resource state parallel then end result may not be as expected
+	We Resolve Race conditions by using the synchronized keyword.
+	Race Condition will Occur only if there are writes, If multiple threads are reading the same resource then Race Conditions may not happen
+Thread Safe:-
+	Code That Can be called by Multiple Threads with out any Race Conditions then that is called Thread Safe
+		Local Variables are Not Shared By multiple Threads because each thread have their own call stack.
+		Local Object references are thread safe until or unless another thread is storing this thread reference while calling the another object
+	Object Member variables are not thread safe because different threads can access/change the state of these variables in heap.	
+Thread Control Escape Rule:-
+	If an resource is created, used and disposed with in the scope of the object then it is thread safe.
+Immutable Objects:-
+   1. Make the instance variables as private.
+   2. remove Setter Methods.
+   3. Let Constructor assign values to instance variables or have static factory method to get the instance of object
+   4. Don't allow sub-classes, by making the class as final.
+   5. If there are any references of other objects in instance fields then don't provide methods to change the state of the object
+    
+--> Go Through Java Memory Model, Computer Memory Model and JVMXComputer Memory Model.
+--> To Avoid Race Conditions, I.e Updates from multiple thread- We can use Synchronized keyword.
+ 	  1. Synchronized instance method.
+ 	  2. Synchronized static method.
+ 	  3. Synchronized block.
+ 	  4. Synchronized static block.
+--> Java Volatile KeyWord guarantees that variable value will be read from Main Memory not cache always.
+
+--> ThreadLocal:
+	 If we create ThreadLocal Object then each thread will create its own copy of Thread Local Object
+	  Means, Two threads accessing same runnable class will create their own thread local variables.
+
+--> Thread Signaling:- 
+	 When we have multiple threads accessing the same object then we should be able to signal between the threads, it can be achieved  by using
+	 thread signaling. There are methods to perform these steps:- wait(), notify() and notifyAll() can be used to achieve this behavior
+
+--> Thread DeadLocks:-
+	 If there are two threads and two objects 
+	 	a. t1 gets lock of Object A and goes to sleep
+	 	b. t2 gets lock of Object B and goes to sleep
+	 	c. now t1 wakes up and tries to get Lock for B
+	 	d. Now t2 wakes up and tries to get Lock for A.
+	 	e. Both t1 and t2 and looking for object locks of A and B hence either of them will not be able to get locks.
+	 There are three different ways of solving this Problem 
+	 	1. Lock Ordering
+	 	2. Lock TimeOut
+	 	3. Maintaining Locks in Map and checking if the Lock is acquired by other Threads 
