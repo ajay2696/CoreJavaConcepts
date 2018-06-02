@@ -1,0 +1,17 @@
+What is the Functional Interface?
+	Interface which will have only one abstract method and interface should be marked with annotation @FunctionalInterface.
+	We can pass this anonymous function implementation as function to another method
+	Function implementation produce results in the context of that run.
+What are Lamda Expressions?
+	Using the functional interface technic, we can remove the boilerplate code to iterate, modify and filter collections data.
+	
+	() -> {
+	}
+	(para)-> {
+		return ...
+	}
+
+How did they implement functional programming in java.?
+	They have introduced implementation of default functions at interface level
+
+
